@@ -33,6 +33,11 @@ const Home = () => {
         }
         else{
           console.log(imagefiles)
+
+          for(let pages = 0; pages < imagefiles.length; pages++){
+             console.log(imagefiles[pages])
+          }
+
           toast.success("Cbz File Parsed Successfully")
           toast.success(`This document has ${imagefiles.length} pages`)
         }
