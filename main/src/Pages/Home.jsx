@@ -26,17 +26,15 @@ const Home = () => {
     else{
       try{  
         const zipfile = await JSZip.loadAsync(cbz)
-        const imagefiles = Object.keys(zipfile.files).filter(name => name.matchAll())
+        const imagefiles = Object.keys(zipfile.files).filter(name => name.match(/\.(jpg|jpeg|png|webp)$/i))
 
         if(imagefiles.length === 0){
           toast.error("No Images In Uploaded Cbz File")
         }
         else{
-
-          let blob = new Blob(imagefiles)
-
-          toast.success(blob.size)
+          console.log(imagefiles)
           toast.success("Cbz File Parsed Successfully")
+          toast.success(`This document has ${imagefiles.length} pages`)
         }
       }
       catch(err){
